@@ -1,0 +1,83 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package viva3q6;
+
+/**
+ *
+ * @author User
+ */
+public class Villain {
+    private String name;
+    private String element;
+    private double maxHp;
+    private double hp;
+    private double attack;
+    private double defense;
+    private int initialCd;
+    private int currentCd;
+
+    public Villain(String name, String element, double maxHp,
+                   double attack, double defense, int initialCd) {
+        this.name = name;
+        this.element = element;
+        this.maxHp = maxHp;
+        this.hp = maxHp;
+        this.attack = attack;
+        this.defense = defense;
+        this.initialCd = initialCd;
+        this.currentCd = initialCd;
+    }
+
+    public String getElement() {
+        return element;
+    }
+    
+    public String getName(){
+        return name;
+    }
+
+    public double getDefense() {
+        return defense;
+    }
+
+    public double getHp() {
+        return hp;
+    }
+
+    public double getAttack() {
+        return attack;
+    }
+
+    public int getCurrentCd() {
+        return currentCd;
+    }
+
+    public void getDamaged(double damage) {
+        hp -= damage;
+        if (hp < 0) hp = 0;
+    }
+
+    public void resetHp() {
+        hp = maxHp;
+    }
+
+    public void decreaseCd() {
+        currentCd--;
+    }
+
+    public void resetCd() {
+        currentCd = initialCd;
+    }
+
+    @Override
+    public String toString() {
+        return "Enemy: " + name +
+               "\nElement: " + element +
+               "\nHP: " + hp +
+               "\nCD: " + currentCd;
+    }
+}
+
+
