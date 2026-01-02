@@ -1,0 +1,65 @@
+package viva3q6;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+/**
+ *
+ * @author User
+ */
+public class Team {
+    private Hero[] deck;
+    private ArrayList<Hero> heroList;
+    private double hp;
+
+    public Team(Hero[] deck) {
+        this.deck = deck;
+        heroList = new ArrayList<>();
+    }
+
+    public ArrayList<Hero> getHeroList() {
+        return heroList;
+    }
+
+    public double getHp() {
+        return hp;
+    }
+
+    public void formTeam() {
+        heroList.clear();
+        hp = 0;
+        Random rand = new Random();
+
+        while (heroList.size() < 4) {
+            Hero h = deck[rand.nextInt(deck.length)];
+            if (!heroList.contains(h)) {
+                heroList.add(h);
+                hp += h.getHp();
+            }
+        }
+    }
+
+    public void getDamaged(double damage) {
+        hp -= damage;
+        if (hp < 0) hp = 0;
+    }
+
+    public void resetTeamHp() {
+        hp = 0;
+        for (Hero h : heroList) {
+            hp += h.getHp();
+        }
+    }
+
+    @Override
+    public String toString() {
+        String output = "Team's HP: " + hp + "\n\n";
+        int i = 1;
+        for (Hero h : heroList) {
+            output += "Hero " + i++ + "\n" + h + "\n";
+        }
+        return output;
+    }
+}
+
+
